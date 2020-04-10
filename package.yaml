@@ -1,0 +1,38 @@
+name:                penntreebank-megaparsec
+version:             0.1.0.0
+#synopsis:
+#description:
+homepage:            https://github.com/aslemen/penntreebank-megaparsec#readme
+license:             BSD3
+author:              Nori Hayashi
+maintainer:          Nori Hayashi <net@hayashi-lin.net>
+copyright:           2020 Nori Hayashi
+category:            Parsing, Natural Language Processing
+extra-source-files:
+- README.md
+
+dependencies:
+  - base >= 4.7 && < 5
+  - containers
+  - mtl
+  - transformers
+  - megaparsec
+
+library:
+  source-dirs: src
+
+tests:
+  unit-tests:
+    source-dirs:
+      - test/unit
+    main: Spec.hs
+    dependencies:
+      - hspec
+      - text
+      - penntreebank-megaparsec
+      - containers
+      - mtl
+    ghc-options: 
+      - -threaded 
+      - -rtsopts 
+      - -with-rtsopts=-N
