@@ -1,7 +1,9 @@
 name:                penntreebank-megaparsec
 version:             0.1.0.0
-#synopsis:
-#description:
+synopsis:            Parser combinators for trees in the Penn Treebank format
+description: |
+    This Haskell package provides parsers for syntactic trees annotated 
+    in the Penn Treebank format, powered by Megaparsec.
 homepage:            https://github.com/aslemen/penntreebank-megaparsec#readme
 license:             BSD3
 author:              Nori Hayashi
