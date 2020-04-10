@@ -43,15 +43,18 @@ Node (CatRight (Atom B) (Atom A)) [
 
 ## Usage 
 ```haskell
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+
 import Data.Tree.Parser.Penn.Megaparsec.Char as TC
 import Data.Text (Text)
-import MegaParsec as MegaP
+import Text.Megaparsec as MegaP
 
 -- define the node type
-data PennNode = NonTerm Text | Term Text
+data PennNode = NonTerm Text | Term Text deriving (Show)
 
 -- define the node parsers
-instance ParsableAsTerm Text PennNode where
+instance {-# OVERLAPS #-} TC.ParsableAsTerm Text PennNode where
     pNonTerm = NonTerm <$> MegaP.takeRest
     pTerm = Term <$> MegaP.takeRest
 

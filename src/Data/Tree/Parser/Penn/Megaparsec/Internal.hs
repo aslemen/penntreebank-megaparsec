@@ -18,14 +18,13 @@ module Data.Tree.Parser.Penn.Megaparsec.Internal (
     ParsableAsTerm(..)
 ) where
 
-import Data.Monoid
 import Text.Megaparsec
 
 {-|
     A type class for node label types 'term' 
     data of which can be obtained by parsing a stream of type 'str'.
 -}
-class (Stream str, Monoid term) => ParsableAsTerm str term where
+class (Stream str) => ParsableAsTerm str term where
     {-|
         A parser that extracts exactly one token 
         of the node label type 'term' from an input stream of type 'str'.
@@ -33,7 +32,7 @@ class (Stream str, Monoid term) => ParsableAsTerm str term where
     pNonTerm :: (Ord err) => ParsecT err str m term
     pTerm :: (Ord err) => ParsecT err str m term
 
-instance (Stream str, Monoid term, Tokens str ~ term) 
+instance (Stream str, Tokens str ~ term) 
     => ParsableAsTerm str term where
     pNonTerm = takeRest
     pTerm = takeRest

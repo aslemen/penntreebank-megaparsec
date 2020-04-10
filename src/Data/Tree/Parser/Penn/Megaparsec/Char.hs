@@ -82,7 +82,7 @@ invokeLabelParserRaw :: (MonadParsec err str m, Token str ~ Char)
 invokeLabelParserRaw 
     = takeWhile1P
         (Just "Literal String")
-        (\x -> x /= '{' && x /= '(' && x /= ')' && not (DCh.isSpace x))
+        (\x -> x /= '(' && x /= ')' && not (DCh.isSpace x))
 
 {-|
     A vertial parser (monad transformer) compositor that 
