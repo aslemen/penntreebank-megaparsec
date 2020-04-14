@@ -1,4 +1,5 @@
 # penntreebank-megaparsec :: Megaparsec parsers for trees in the Penn Treebank format
+![Travis CI build :: master](https://img.shields.io/travis/aslemen/penntreebank-megaparsec/master?label=Travis%20CI%20build%20%3A%3A%20master)
 
 This Haskell package provides parsers for syntactic trees annotated 
     in the Penn Treebank format, powered 
