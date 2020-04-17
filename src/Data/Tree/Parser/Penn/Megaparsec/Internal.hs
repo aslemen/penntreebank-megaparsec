@@ -21,13 +21,13 @@ module Data.Tree.Parser.Penn.Megaparsec.Internal (
 import Text.Megaparsec
 
 {-|
-    A type class for node label types 'term' 
-    data of which can be obtained by parsing a stream of type 'str'.
+    A type class for node label types @term@ 
+    data of which can be obtained by parsing a stream of type @str@.
 -}
 class (Stream str) => ParsableAsTerm str term where
     {-|
         A parser that extracts exactly one token 
-        of the node label type 'term' from an input stream of type 'str'.
+        of the node label type @term@ from an input stream of type @str@.
     -}
     pNonTerm :: (Ord err) => ParsecT err str m term
     pTerm :: (Ord err) => ParsecT err str m term
