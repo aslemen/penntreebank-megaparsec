@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 51655472fc364cb3aeec7d393dc61d5a63bc39a28b01833e78f57bec3545b7c8
+-- hash: 2038350825b9e382ccb39ddf33b0bf90cb4b01d77bbc98a155ab46389f00c463
 
 name:           penntreebank-megaparsec
-version:        0.1.0
+version:        0.1.1
 synopsis:       Parser combinators for trees in the Penn Treebank format
 description:    This Haskell package provides parsers for syntactic trees annotated 
                 in the Penn Treebank format, powered by Megaparsec.

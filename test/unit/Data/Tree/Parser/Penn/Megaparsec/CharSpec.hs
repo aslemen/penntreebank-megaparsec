@@ -19,6 +19,9 @@ import Data.Tree.Parser.Penn.Megaparsec.Char as TC
 parser :: (Monad m) => TC.PennTreeParserT Text m Text
 parser = TC.pTree
 
+parserUnsafe :: (Monad m) => TC.PennTreeParserT Text m Text
+parserUnsafe = TC.pUnsafeTree
+
 spec :: Spec
 spec = do
     describe "pTree" $ do
@@ -30,6 +33,19 @@ spec = do
             parseTest parser "A B V"
             parseTest parser "A (B V)"
             parseTest parser "(A (B V))"
+            parseTest parser "( A (B V))"
             parseTest parser "(A (B C (D E)))"
         it "fails against broken trees" $ do
             parseTest parser "(A (B C (D E)"
+    describe "pUnsafeTree" $ do
+        it "parses" $ do 
+            parseTest parserUnsafe ""
+            parseTest parserUnsafe "()"
+            parseTest parserUnsafe "( )"
+            parseTest parserUnsafe "A"
+            parseTest parserUnsafe "A B V"
+            parseTest parserUnsafe "A (B V)"
+            parseTest parserUnsafe "(A (B V))"
+            parseTest parserUnsafe "(A (B C (D E)))"
+        it "fails against broken trees" $ do
+            parseTest parserUnsafe "(A (B C (D E)"

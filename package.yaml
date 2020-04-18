@@ -1,5 +1,5 @@
 name:                penntreebank-megaparsec
-version:             0.1.0
+version:             0.1.1
 synopsis:            Parser combinators for trees in the Penn Treebank format
 description: |
     This Haskell package provides parsers for syntactic trees annotated 
