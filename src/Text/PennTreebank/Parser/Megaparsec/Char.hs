@@ -123,7 +123,7 @@ pDoc = do
     
     > (pUnsafeDoc :: ParsecT Void Text Identity [Tree Text])
 
-    @since 0.1.1
+    @since 0.2.0
 -}
 pUnsafeDoc :: (
         Ord err,
@@ -138,5 +138,12 @@ pUnsafeDoc = do
     eof
     return doc
 
+{- 
+    @since 0.2.0
+-}
 type PennDocParserT str m term = ParsecT Void str m [Tree term]
+
+{- 
+    @since 0.2.0
+-}
 type PennDocParser str term = PennDocParserT str Identity term

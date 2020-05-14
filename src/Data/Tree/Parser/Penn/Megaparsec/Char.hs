@@ -65,7 +65,7 @@ import Data.Tree.Parser.Penn.Megaparsec.Internal
         symbols preserved for tree node demarcation
         (e.g. parentheses and spaces).
     
-    @since 0.1.1
+    @since 0.2.0
 -}
 class (Stream str) => UnsafelyParsableAsTerm str term where
     {-|
@@ -243,7 +243,7 @@ pTree
     
     > (pUnsafeTree :: ParsecT Void Text Identity (Tree Text))
 
-    @since 0.1.1
+    @since 0.2.0
 -}
 pUnsafeTree ::
     (

@@ -31,6 +31,9 @@ import qualified Text.Megaparsec.Char as MC
 import Data.Tree
 import Data.Tree.Parser.Penn.Megaparsec.Char
 
+{- 
+    @since 0.2.0
+-}
 instance (Lift a) => Lift (Tree a) where
     lift (Node root children) = do
         qRoot <- lift root
@@ -39,6 +42,9 @@ instance (Lift a) => Lift (Tree a) where
             `AppE` qRoot
             `AppE` (ListE qChildren)
 
+{- 
+    @since 0.2.0
+-}
 pennTreeQQ :: 
     forall a. (ParsableAsTerm String a, Lift a) 
     => QuasiQuoter
@@ -69,8 +75,14 @@ pennTreeQQ = QuasiQuoter
                     return undefined
                 Right t -> lift t
 
+{- 
+    @since 0.2.0
+-}
 penn = pennTreeQQ
 
+{- 
+    @since 0.2.0
+-}
 pennTreeUnsafeQQ :: 
     forall a. (UnsafelyParsableAsTerm String a, Lift a) 
     => QuasiQuoter
@@ -101,4 +113,7 @@ pennTreeUnsafeQQ = QuasiQuoter
                     return undefined
                 Right t -> lift t
 
+{- 
+    @since 0.2.0
+-}
 pennUnsafe = pennTreeUnsafeQQ
