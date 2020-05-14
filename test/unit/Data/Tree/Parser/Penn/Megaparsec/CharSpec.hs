@@ -1,5 +1,5 @@
 {-# LANGUAGE OverloadedStrings #-}
-
+{-# LANGUAGE QuasiQuotes #-}
 module Data.Tree.Parser.Penn.Megaparsec.CharSpec (
     spec
 ) where
@@ -15,6 +15,7 @@ import Data.Tree
 import Text.Megaparsec
 
 import Data.Tree.Parser.Penn.Megaparsec.Char as TC
+import Data.Tree.Parser.Penn.Megaparsec.Char.QQ
 
 parser :: (Monad m) => TC.PennTreeParserT Text m Text
 parser = TC.pTree
@@ -37,6 +38,15 @@ spec = do
             parseTest parser "(A (B C (D E)))"
         it "fails against broken trees" $ do
             parseTest parser "(A (B C (D E)"
+    describe "pTreeQQ" $ do
+        it "parses" $ example $ do
+            return [penn| () |]
+            return [penn| ( ) |]
+            return [penn| A |]
+            return [penn| (A (B V)) |]
+            return [penn| ( A (B V)) |]
+            return [penn| (A (B C (D E))) |]
+            return ()
     describe "pUnsafeTree" $ do
         it "parses" $ do 
             parseTest parserUnsafe ""
@@ -49,3 +59,12 @@ spec = do
             parseTest parserUnsafe "(A (B C (D E)))"
         it "fails against broken trees" $ do
             parseTest parserUnsafe "(A (B C (D E)"
+    describe "pUnsafeTreeQQ" $ do
+        it "parses" $ example $ do
+            return [pennUnsafe| () |]
+            return [pennUnsafe| ( ) |]
+            return [pennUnsafe| A |]
+            return [pennUnsafe| (A (B V)) |]
+            return [pennUnsafe| ( A (B V)) |]
+            return [pennUnsafe| (A (B C (D E))) |]
+            return ()

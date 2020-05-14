@@ -4,10 +4,10 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 2038350825b9e382ccb39ddf33b0bf90cb4b01d77bbc98a155ab46389f00c463
+-- hash: 252c3ebdeaae38a95a49375b66dcfd7ca8b2f93526b4a658d8f019471ddc1666
 
 name:           penntreebank-megaparsec
-version:        0.1.1
+version:        0.2.0
 synopsis:       Parser combinators for trees in the Penn Treebank format
 description:    This Haskell package provides parsers for syntactic trees annotated 
                 in the Penn Treebank format, powered by Megaparsec.
@@ -31,6 +31,7 @@ source-repository head
 library
   exposed-modules:
       Data.Tree.Parser.Penn.Megaparsec.Char
+      Data.Tree.Parser.Penn.Megaparsec.Char.QQ
       Data.Tree.Parser.Penn.Megaparsec.Internal
       Text.PennTreebank.Parser.Megaparsec.Char
   other-modules:
@@ -42,6 +43,7 @@ library
     , containers >=0.5 && <0.7
     , megaparsec >=8.0 && <9
     , mtl >=2.2.2 && <3
+    , template-haskell >=2.15 && <3
     , transformers >=0.4 && <0.6
   default-language: Haskell2010
 
@@ -63,6 +65,7 @@ test-suite unit-tests
     , megaparsec >=8.0 && <9
     , mtl >=2.2.2 && <3
     , penntreebank-megaparsec
+    , template-haskell >=2.15 && <3
     , text >=0.2 && <1.3
     , transformers >=0.4 && <0.6
   default-language: Haskell2010
